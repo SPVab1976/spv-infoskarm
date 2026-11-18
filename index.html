@@ -1,1 +1,205 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stockholm Pool & Värme - Infoskärm</title>
 
+<meta http-equiv="refresh" content="21600">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#003C71;
+    color:#ffffff;
+    font-family:Arial, Helvetica, sans-serif;
+    height:100vh;
+    overflow:hidden;
+}
+
+.container{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    padding:25px 40px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    min-height:140px;
+}
+
+.logo{
+    max-height:120px;
+    max-width:400px;
+    background:#ffffff;
+    padding:8px;
+    border-radius:10px;
+}
+
+.right{
+    text-align:right;
+}
+
+.clock{
+    font-size:58px;
+    font-weight:bold;
+}
+
+.date{
+    font-size:24px;
+}
+
+.content{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+h1{
+    font-size:72px;
+    line-height:1.1;
+    margin-bottom:30px;
+}
+
+.text{
+    font-size:34px;
+    line-height:1.5;
+    max-width:1500px;
+}
+
+.footer{
+    border-top:1px solid rgba(255,255,255,.3);
+    padding-top:20px;
+    display:flex;
+    justify-content:space-between;
+    font-size:24px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <img src="Skärmbild 2026-11-18 092731.png" class="logo" alt="Logga">
+
+        <div class="right">
+            <div id="clock" class="clock"></div>
+            <div id="date" class="date"></div>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1 id="title"></h1>
+        <div id="text" class="text"></div>
+    </div>
+
+    <div class="footer">
+        <div>Stockholm Pool & Värme AB</div>
+        <div>www.spvab.se</div>
+        <div>30 sekunder per nyhet</div>
+    </div>
+
+</div>
+
+<script>
+
+const nyheter = [
+
+{
+titel: "NY BERGVÄRMETEKNIK MED R290 I CENTRUM",
+text: "NIBE fortsätter utvecklingen av nästa generations bergvärmepumpar med fokus på köldmediet R290. Den nya tekniken kombinerar hög energieffektivitet med lägre klimatpåverkan och är utvecklad för framtidens miljökrav. Lösningen ger hög prestanda även under kalla nordiska vintrar."
+},
+
+{
+titel: "NIBE TAR STEGET UT PÅ DEN INTERNATIONELLA SKIDSKYTTEARENAN",
+text: "Genom sitt internationella engagemang inom skidskytte stärker NIBE sin närvaro på den globala marknaden. Satsningen lyfter fram företagets fokus på hållbara energilösningar och ökar kännedomen om varumärket."
+},
+
+{
+titel: "NYA ALVA OCH LIVA GÖR SORTIMENTET FULLSTÄNDIGT",
+text: "Med lanseringen av ALVA och LIVA utökar NIBE sitt erbjudande inom ventilation och inomhusklimat. Produkterna kompletterar befintliga lösningar och ger fler möjligheter att skapa energieffektiva och komfortabla fastigheter."
+},
+
+{
+titel: "NY LJUDKAMMARE DRIVER UTVECKLINGEN FRAMÅT",
+text: "Den nya ljudkammaren ger NIBE större möjligheter att utveckla tystare produkter med hög komfort. Investeringen bidrar till förbättrade tester och ökad kvalitet i framtida värmepumpslösningar."
+},
+
+{
+titel: "NY FUNKTION ANPASSAR SIG EFTER EFFEKTTARIFFEN",
+text: "NIBEs nya funktion hjälper användare att anpassa sin energianvändning efter effekttariffer. Resultatet kan bli lägre energikostnader genom att minska höga effekttoppar."
+},
+
+{
+titel: "NY ENERGISNÅL FRÅNLUFTSVÄRMEPUMP MED INBYGGD KYLFUNKTION",
+text: "Den nya frånluftsvärmepumpen kombinerar effektiv uppvärmning med komfortkyla. Återvinning av energi från ventilationsluften bidrar till ett behagligt inomhusklimat året runt."
+},
+
+{
+titel: "RÖRMÄNNEN BLICKAR FRAMÅT",
+text: "I reportaget berättar Rörmännen om marknadens utveckling och framtidsmöjligheter. Energieffektiva installationer, digitalisering och kompetensutveckling står i fokus."
+},
+
+{
+titel: "INGEMARS VÄRMEPUMP – EN RIKTIG FIGHTER",
+text: "Ett kundcase som visar hur en väl installerad värmepump kan leverera trygg värme under lång tid. Driftssäkerhet, energieffektivitet och lång livslängd lyfts fram."
+}
+
+];
+
+let aktuellNyhet = 0;
+
+function visaNyhet() {
+
+    document.getElementById("title").innerText =
+        nyheter[aktuellNyhet].titel;
+
+    document.getElementById("text").innerText =
+        nyheter[aktuellNyhet].text;
+
+    aktuellNyhet++;
+
+    if (aktuellNyhet >= nyheter.length) {
+        aktuellNyhet = 0;
+    }
+}
+
+visaNyhet();
+
+setInterval(visaNyhet, 30000);
+
+function uppdateraTid() {
+
+    const nu = new Date();
+
+    document.getElementById("clock").innerText =
+        nu.toLocaleTimeString("sv-SE");
+
+    document.getElementById("date").innerText =
+        nu.toLocaleDateString("sv-SE", {
+            weekday:"long",
+            day:"numeric",
+            month:"long",
+            year:"numeric"
+        });
+}
+
+uppdateraTid();
+
+setInterval(uppdateraTid, 1000);
+
+</script>
+
+</body>
+</html>
