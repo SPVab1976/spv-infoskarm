@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stockholm Pool & Värme - Infoskärm</title>
+
+<meta http-equiv="refresh" content="21600">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#003C71;
+    color:white;
+    height:100vh;
+    overflow:hidden;
+}
+
+.container{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    padding:30px 50px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    max-height:120px;
+    max-width:400px;
+    background:white;
+    padding:10px;
+    border-radius:10px;
+}
+
+.right{
+    text-align:right;
+}
+
+.clock{
+    font-size:60px;
+    font-weight:bold;
+}
+
+.date{
+    font-size:28px;
+}
+
+.content{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+h1{
+    font-size:72px;
+    margin-bottom:30px;
+    line-height:1.1;
+}
+
+.text{
+    font-size:36px;
+    line-height:1.5;
+    max-width:1500px;
+}
+
+.footer{
+    display:flex;
+    justify-content:space-between;
+    border-top:1px solid rgba(255,255,255,0.3);
+    padding-top:20px;
+    font-size:26px;
+}
+
+.fade{
+    animation:fade 1s;
+}
+
+@keyframes fade{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container fade">
+
+    <div class="header">
+        <img src="image.png" class="logo">
+        <div class="right">
+            <div id="clock" class="clock"></div>
+            <div id="date" class="date"></div>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1 id="title"></h1>
+        <div id="text" class="text"></div>
+    </div>
+
+    <div class="footer">
+        <div>Stockholm Pool & Värme AB</div>
+        <div>www.spvab.se</div>
+        <div>30 sekunder per nyhet</div>
+    </div>
+
+</div>
+
+<script>
+
+const nyheter = [
+
+{
+titel:"NY BERGVÄRMETEKNIK MED R290 I CENTRUM",
+text:"NIBE fortsätter utvecklingen av nästa generations bergvärmepumpar med fokus på köldmediet R290. Tekniken kombinerar mycket hög energieffektivitet med låg klimatpåverkan och är utvecklad för att möta framtidens miljökrav. Lösningen ger hög prestanda även under nordiska vinterförhållanden."
+},
+
+{
+titel:"NIBE TAR STEGET UT PÅ DEN INTERNATIONELLA SKIDSKYTTEARENAN",
+text:"Genom sitt internationella engagemang inom skidskytte stärker NIBE sin närvaro på den globala marknaden. Satsningen lyfter fram företagets fokus på hållbara energilösningar och ökar kännedomen om var
